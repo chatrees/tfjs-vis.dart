@@ -5,27 +5,36 @@ import "package:js/js.dart";
 
 // TODO: Put public facing types in this file.
 
+@JS()
+@anonymous
 class ScatterplotContainer {
   String name;
 }
 
+///
+/// Add @JS() annotation to make the class works with Object.assign(..) function
+///
+/// @see webpack://tfvis/./dist/render/scatterplot.js
+///
+@JS()
+@anonymous
 class Point2D {
   num x;
   num y;
-
-  Point2D(this.x, this.y);
 }
 
+@JS()
+@anonymous
 class ScatterplotData {
-  List values = new List();
-  List<String> series = new List();
+  List values;
+  List<String> series;
 }
 
+@JS()
+@anonymous
 class BarchartValue {
   num index;
   num value;
-
-  BarchartValue(this.index, this.value);
 }
 
 @JS()
@@ -49,15 +58,20 @@ class SurfaceOptions {
   String tab;
 }
 
+@JS()
+@anonymous
 class Visor {
   external dynamic surface(SurfaceOptions options);
 }
 
+@JS()
+@anonymous
 class Render {
   external void scatterplot(ScatterplotContainer container, ScatterplotData data, ScatterplotOptions opts);
   external void barchart(dynamic surface, List<BarchartValue> data, BarchartOptions opts);
 }
 
+@JS("render")
 external Render get render;
 
 @JS("visor")
