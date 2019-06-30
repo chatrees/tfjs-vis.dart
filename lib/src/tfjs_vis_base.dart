@@ -5,23 +5,33 @@ import "package:js/js.dart";
 
 // TODO: Put public facing types in this file.
 
-@JS()
-@anonymous
 class ScatterplotContainer {
   String name;
 }
 
-class ScatterplotValue {
+class Point2D {
   num x;
   num y;
 
-  ScatterplotValue(this.x, this.y);
+  Point2D(this.x, this.y);
+}
+
+class ScatterplotData {
+  List values = new List();
+  List<String> series = new List();
+}
+
+class BarchartValue {
+  num index;
+  num value;
+
+  BarchartValue(this.index, this.value);
 }
 
 @JS()
 @anonymous
-class ScatterplotData {
-  List<ScatterplotValue> values;
+class BarchartOptions {
+
 }
 
 @JS()
@@ -32,8 +42,23 @@ class ScatterplotOptions {
   num height;
 }
 
-class _Render {
-  external void scatterplot(ScatterplotContainer container, ScatterplotData data, ScatterplotOptions opts);
+@JS()
+@anonymous
+class SurfaceOptions {
+  String name;
+  String tab;
 }
 
-external _Render get render;
+class Visor {
+  external dynamic surface(SurfaceOptions options);
+}
+
+class Render {
+  external void scatterplot(ScatterplotContainer container, ScatterplotData data, ScatterplotOptions opts);
+  external void barchart(dynamic surface, List<BarchartValue> data, BarchartOptions opts);
+}
+
+external Render get render;
+
+@JS("visor")
+external Visor visor();
