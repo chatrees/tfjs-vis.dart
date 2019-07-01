@@ -12,4 +12,7 @@ export 'src/render/render.dart';
 export 'src/render/scatterplot.dart';
 export 'src/render/barchart.dart';
 
+// show
+export 'src/show/show.dart';
+
 // TODO: Export any libraries intended for clients of this package.

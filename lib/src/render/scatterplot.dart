@@ -1,7 +1,3 @@
-class ScatterplotContainer {
-  String name;
-}
-
 class ScatterplotOptions {
   String xLabel;
   String yLabel;
